@@ -145,6 +145,14 @@ if __name__ == "__main__":
                             remove_by_id(data, ip)
                             data.append({'id': ip, 'value': pw})
                             print("Service edited")
+                elif i == "4":
+                    print("spaces will be deleted.")
+                    ip = input("Service name: ").replace(" ", "")
+                    if ip == "" or get(data, ip) is None:
+                        print("Service not found!")
+                    else:
+                        remove_by_id(data, ip)
+                        print("Service deleted!")
                 elif i == "5":
                     break
 
