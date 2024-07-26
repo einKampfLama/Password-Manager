@@ -100,16 +100,14 @@ if __name__ == "__main__":
             decrypt(key, "exend.db")
 
             data = load_data_from_db("exend.db")
-            # print(data)
-            # data.append({'id': 'minecraft', 'value': 'ichmagbäume'})
-            # save_data_to_db("exend.db", data)
             encrypt(key, "exend.db")
 
             print("1 : copy Service password\n"
                   "2 : create Service\n"
                   "3 : edit Service\n"
                   "4 : delete Service\n"
-                  "5 : Quit")
+                  "5 : Quit\n"
+                  "Please close the program with 5 otherwise the new data will NOT be saved")
             while True:
                 i = input()
                 if i == "1":
@@ -134,7 +132,7 @@ if __name__ == "__main__":
                             print("Service created")
                 elif i == "3":
                     print("spaces will be deleted.")
-                    ip = input("Service name: ").replace(" ", "")
+                    ip = input("Which service do you want to edit: ").replace(" ", "")
                     if ip == "" or get(data, ip) is None:
                         print("Service not found!")
                     else:
@@ -147,7 +145,7 @@ if __name__ == "__main__":
                             print("Service edited")
                 elif i == "4":
                     print("spaces will be deleted.")
-                    ip = input("Service name: ").replace(" ", "")
+                    ip = input("Which service do you want to delete: ").replace(" ", "")
                     if ip == "" or get(data, ip) is None:
                         print("Service not found!")
                     else:
