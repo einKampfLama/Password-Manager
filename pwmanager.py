@@ -110,13 +110,25 @@ if __name__ == "__main__":
             while True:
                 i = input()
                 if i == "1":
-                    ip = getpass.getpass("Service: ")
+                    ip = input("Service: ")
                     pw = get(data, ip)
                     if pw is None:
                         print("Service not found")
                     else:
                         pyperclip.copy(pw)
                         print("copied")
+                elif i == "2":
+                    print("spaces will be deleted.")
+                    ip = input("Service name: ").replace(" ", "")
+                    if ip == "":
+                        print("empty str!")
+                    else:
+                        pw = getpass.getpass("Password: ").replace(" ", "")
+                        if pw == "":
+                            print("empty str!")
+                        else:
+                            data.append({'id': ip, 'value': pw})
+                            print("Service created")
                 elif i == "5":
                     break
 
