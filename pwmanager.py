@@ -67,6 +67,9 @@ def get(data, id):
             return item['value']
     return None
 
+def remove_by_id(data, id_to_remove):
+    data[:] = [item for item in data if item['id'] != id_to_remove]
+
 if __name__ == "__main__":
     path = Path("exend.db")
 
@@ -129,6 +132,19 @@ if __name__ == "__main__":
                         else:
                             data.append({'id': ip, 'value': pw})
                             print("Service created")
+                elif i == "3":
+                    print("spaces will be deleted.")
+                    ip = input("Service name: ").replace(" ", "")
+                    if ip == "" or get(data, ip) is None:
+                        print("Service not found!")
+                    else:
+                        pw = getpass.getpass("New password: ").replace(" ", "")
+                        if pw == "":
+                            print("empty str!")
+                        else:
+                            remove_by_id(data, ip)
+                            data.append({'id': ip, 'value': pw})
+                            print("Service edited")
                 elif i == "5":
                     break
 
